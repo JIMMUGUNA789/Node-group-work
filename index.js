@@ -1,37 +1,14 @@
-(function add(num1, num) {
-  console.log(num + num1);
-})(78, 77);
-function add(num1, num){
+const http = require('http')
+const dotenv = require('dotenv')
+dotenv.config()
+const server = http.createServer((req, res)=>{
+    res.writeHead(200,{'Content-Type':'text/html'})
+   
+   res.write("<h1>hello world</h1>")
+   res.end()
+})
+const PORT = process.env.PORT ||  3000
 
-}
-add()
-const greeting = name => {
-  console.log("Greetings " + name);
-};
-greeting("jim");
-const getFullname = (fname, lname) => {
-  return fname + " " + lname;
-};
-console.log(getFullname("Jim", "Muguna"));
-
-/**
- * 
- * @param {number} age 
- * @returns 
- */
-const adult = (age) => age > 18;
-console.log(adult());
-//anonymous functions
-((a, integer)=>{
-    return a+integer
-})(4,5)
-
-/**
- * 
- * @param {number} a 
- * @param {number} b 
- * @returns 
- */
-function sub(a, b){
-  return b-a;
-}
+server.listen(PORT,()=>{
+    console.log(`server running on http://localhost:${PORT}`)
+})
